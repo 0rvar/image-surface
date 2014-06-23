@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Surface</title>
+  <style type="text/css">
+    #container {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #000;
+
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      text-align: center;
+    }
+    .msg {
+      display: inline-block;
+      position: relative;
+      margin-top: 200px;
+      width: auto;
+
+      height: 40px;
+      border-radius: 40px;
+      padding: 10px 20px 10px 20px;
+      background: rgba(0, 0, 0, 0.9);
+
+      font-family: 'Arial Black', sans-serif;
+      color: rgb(0, 146, 230);
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="msg">
+      Connecting...
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    var container = document.getElementById('container');
+    var msg = container.querySelector('.msg');
+
+    socket.on('connect', function() {
+      msg.innerText = 'Connected. Waiting for image...';
+      msg.style.display = null;
+      console.log('# Connected');
+    });
+
+    socket.on('reconnecting', function() {
+      msg.innerText = 'Disconnected. Reconnecting...';
+      msg.style.display = null;
+      console.log('# Reconnecting...');
+    });
+
+    socket.on('image', function(image){
+      if(image != null) {
+        var src = 'url(data:image/x-png;base64,' + image + ')';
+        container.style.backgroundImage = src;
+        msg.innerText = '';
+        msg.style.display = 'none';
+        console.log('# New image');
+      } else {
+        container.style.backgroundImage = null;
+        msg.innerText = 'Connected. Waiting for image...';
+        msg.style.display = null;
+        console.log('# Cleared image');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "image-surface",
+  "version": "0.0.1",
+  "description": "A surface that displays an image that can be updated in real time",
+  "dependencies": {
+    "express": "~4.4.4",
+    "socket.io": "~1.0.6",
+    "body-parser": "~1.4.3"
+  }
+}

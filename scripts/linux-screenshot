@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require 'base64'
+require 'net/http'
+
+path = "#{Dir.pwd}/screenshot.png"
+system "scrot -d 0.2 -u #{path}"
+contents = File.open(path, 'rb').read
+File.delete path
+
+payload = Base64.strict_encode64(contents)
+Net::HTTP.post_form(URI.parse('http://localhost:3000/'), {'image' => payload})
