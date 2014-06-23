@@ -1,0 +1,24 @@
+#container {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #000;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+}
+.msg {
+  display: inline-block;
+  position: relative;
+  margin-top: 200px;
+  width: auto;
+
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px 20px 0px 20px;
+  background: rgba(0, 0, 0, 0.9);
+
+  font-family: 'Arial Black', sans-serif;
+  color: rgb(0, 146, 230);
+}

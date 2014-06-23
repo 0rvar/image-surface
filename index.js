@@ -6,6 +6,7 @@ var io         = require('socket.io')(http)
 
 // Accept POST data
 app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}))
+app.use('/static', express.static('static'))
 
 // State
 var image = null
