@@ -57,8 +57,9 @@ function render(src) {
   img.onload = function(){
     // Calculate where to draw the image
     var scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-    var width = scale * img.width;
-    var height = scale * img.height;
+    scale = Math.min(1.5, scale);
+    var width  = Math.round(scale * img.width);
+    var height = Math.round(scale * img.height);
     var x = (canvas.width - width)/2;
     var y = (canvas.height - height)/2;
 
