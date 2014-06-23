@@ -1,3 +1,5 @@
+'use strict'
+
 var express    = require('express')
 var bodyParser = require('body-parser')
 var app        = express()
@@ -12,12 +14,11 @@ app.use('/static', express.static('static'))
 var image = null
 
 app.post('/', function(req, res){
-  console.log("# New image");
+  console.log("# New image")
   res.send(null)
   image = req.body.image
   io.emit('image', image)
 })
-
 app.post('/clear', function(req, res) {
   console.log("# Cleared image")
   image = null

@@ -1,3 +1,5 @@
+'use strict';
+
 var socket = io();
 var container = document.getElementById('container');
 var messageDiv = container.querySelector('.msg');

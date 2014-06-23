@@ -3,7 +3,7 @@ require 'base64'
 require 'net/http'
 
 path = "#{Dir.pwd}/screenshot.png"
-system 'sleep 1' # Wait some milliseconds to get a free keyboard
+system 'sleep 0.2' # Wait some milliseconds to get a free keyboard
 system "scrot -q 100 -s #{path}"
 contents = File.open(path, 'rb').read
 File.delete path
