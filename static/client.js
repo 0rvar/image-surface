@@ -70,7 +70,7 @@ function render(src) {
     }
     var fillTop    = getColorAt(0, 0);
     // Keep to the left as scrollbars are generally on the right
-    var fillBottom = getColorAt(0, img.height-1);
+    var fillBottom = getColorAt(1, img.height-1);
 
     // Pass 2: draw top and bottom colors
     context.fillStyle = fillTop;
