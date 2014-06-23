@@ -1,13 +1,19 @@
 #container {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #000;
 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
   text-align: center;
+  overflow: hidden;
 }
+
+#container canvas {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
 .msg {
   display: inline-block;
   position: relative;
@@ -21,4 +27,16 @@
 
   font-family: 'Arial Black', sans-serif;
   color: rgb(0, 146, 230);
+
+  transition-property: transform, -webkit-transform;
+  transition-duration: 0.2s, 0.2s;
+  transition-delay: 0s, 0.3s;
+  transition-timing-function: cubic-bezier(0.25, 0.25, 0.325, -1);
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+.msg.hide {
+  transform: scale(0);
+  -webkit-transform: scale(0);
 }
